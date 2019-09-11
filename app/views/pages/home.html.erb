@@ -1,7 +1,7 @@
 <h1>Star Wars Films</h1>
 
-<% @films.each do |film| %>
-  <div>
-    <p><%= film["title"] %></p>
-  </div>
-<% end %>
+<ul>
+    <% @films.each do |film| %>
+        <li><%= film["title"] %> <%= link_to "show", film_path(film["url"].gsub(/\D/, "")) %></li>
+    <% end %>
+</ul>
