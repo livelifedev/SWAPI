@@ -1,24 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Test branch for ajax call.
+Favouriting a film will run JS function to push it in array and save to local storage,
+After it will grab this data from local storage and send it as a POST request to rails server,
+Rails will grab data from params and use it to check which films are in favourites,
+HTML is rendered and favourited films will be sorted to top of list

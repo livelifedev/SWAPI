@@ -1,34 +1,14 @@
-const favorited = filmObject => {
+// Set movie as fav in local storage
+const setFavs = filmId => {
   alert("favourited");
-  const films = document.getElementById("films-listings");
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  const nodeString = filmObject.outerHTML;
 
-  console.log(favorites);
-  favorites.push(nodeString);
+  favorites.push(filmId);
   localStorage.setItem("favorites", JSON.stringify(favorites));
-
-  let favoritesString = "";
-  for (let fav of favorites) {
-    favoritesString += fav;
-  }
-
-  films.innerHTML = favoritesString;
+  console.log(favorites);
 };
 
-// const filmsList = () => {
-//   const container = document.getElementById("films-listings").childNodes;
-//   console.log(container);
-
-//   const allFilms = [];
-
-//   for (let film of filmsList.entries()) {
-//     allFilms.push(film.outerHTML);
-//   }
-
-//   console.log(allFilms);
-// };
-
+// Send local storage data to Rails server
 const sendLocalData = () => {
   const url = `${window.location.origin}/test`;
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -40,5 +20,10 @@ const sendLocalData = () => {
     headers: {
       "Content-Type": "application/json"
     }
+  }).then(res => {
+    console.log(res);
+    // window.location.reload();
   });
 };
+
+// document.onload = sendLocalData();
