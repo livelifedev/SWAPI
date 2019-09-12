@@ -28,3 +28,17 @@ const favorited = filmObject => {
 
 //   console.log(allFilms);
 // };
+
+const sendLocalData = () => {
+  const url = `${window.location.origin}/test`;
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const data = { favorites };
+
+  fetch(url, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+};

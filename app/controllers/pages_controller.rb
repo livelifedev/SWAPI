@@ -3,6 +3,7 @@ class PagesController < ApplicationController
         response = HTTParty.get('https://swapi.co/api/films/')
         json = JSON.parse(response.body)
         @films = json["results"]
+        puts params["username"]
     end
 
     def show
