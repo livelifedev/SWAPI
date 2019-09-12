@@ -1,19 +1,17 @@
 const favorited = filmObject => {
-  alert("favourited");
-  const films = document.getElementById("films-listings");
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   const nodeString = filmObject.outerHTML;
+  const index = favorites.indexOf(nodeString);
 
-  console.log(favorites);
-  favorites.push(nodeString);
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-
-  let favoritesString = "";
-  for (let fav of favorites) {
-    favoritesString += fav;
+  if (index !== -1) {
+    favorites.splice(index, 1);
+  } else {
+    favorites.unshift(nodeString);
   }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  alert("favourited");
 
-  films.innerHTML = favoritesString;
+  window.location.reload();
 };
 
 const filmsList = () => {
@@ -24,11 +22,19 @@ const filmsList = () => {
   for (let film of filmItems.entries()) {
     allFilms.push(film[1].outerHTML);
   }
-  console.log(allFilms);
 
-  const nonFavorites = allFilms.filter(x => !favorites.includes(x));
-
-  console.log(nonFavorites);
+  const nonFavorites = favorites
+    ? allFilms.filter(x => !favorites.includes(x))
+    : [];
 
   localStorage.setItem("nonFavorites", JSON.stringify(nonFavorites));
+};
+
+const loadFilmsList = () => {
+  const container = document.getElementById("films-listings");
+  const favorites = JSON.parse(localStorage.getItem("favorites"));
+  const nonFavorites = JSON.parse(localStorage.getItem("nonFavorites"));
+  const displayList = [...favorites, ...nonFavorites];
+
+  container.innerHTML = displayList.join(" ");
 };
