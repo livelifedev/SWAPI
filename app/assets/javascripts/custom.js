@@ -1,21 +1,17 @@
-// localStorage.setItem("playlist", JSON.stringify(userPlaylists));
-
 const favorited = filmObject => {
-  // const filmId = filmObject.getAttribute("data-id");
   alert("favourited");
-  console.log(filmObject);
-
+  const films = document.getElementById("films-listings");
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   const nodeString = filmObject.outerHTML;
 
   console.log(favorites);
   favorites.push(nodeString);
   localStorage.setItem("favorites", JSON.stringify(favorites));
+
+  let favoritesString = "";
+  for (let fav of favorites) {
+    favoritesString += fav;
+  }
+
+  films.innerHTML = favoritesString;
 };
-
-// const filmsList = () => {
-//   const films = document.getElementById("films-listings");
-
-//   //render out new list
-//   films.innerHTML
-// };
