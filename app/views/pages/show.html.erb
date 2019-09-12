@@ -2,5 +2,18 @@
 
 <div>
     <p><%= @film["title"] %></p>
+    <p><%= @film["episode_id"] %></p>
+    <p><%= @film["opening_crawl"] %></p>
+    <p><%= @film["director"] %></p>
+    <p><%= @film["producer"] %></p>
+    <p><%= @film["release_date"] %></p>
+    <p>Characters:</p>
+    <ul id="characters-listings">
+        <% @characters.each do |char| %>
+            <li class="char-item">
+                <%= char["name"] %> 
+            </li>
+        <% end %>
+    </ul>
     <p><%= link_to "back", root_path %></p>
 </div>

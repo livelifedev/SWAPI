@@ -6,11 +6,13 @@
     <%= submit_tag("Search") %>
 <% end %>
 
-<ul>
+<ul id="films-listings">
     <% @results.each do |film| %>
-        <li>
+        <% film_id = film["url"].gsub(/\D/, "") %>
+        <li class="film-item">
             <%= film["title"] %> 
-            <%= link_to "show", film_path(film["url"].gsub(/\D/, "")) %>
+            <%= link_to "show", film_path(film_id) %>
+            <span class="fav-button" onclick="favorited(this.parentNode)">fave</span>
         </li>
     <% end %>
 </ul>
