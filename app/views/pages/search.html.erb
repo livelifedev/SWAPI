@@ -8,6 +8,9 @@
 
 <ul>
     <% @results.each do |film| %>
-        <li><%= film["title"] %> <%= link_to "show", film_path(film["url"].gsub(/\D/, "")) %></li>
+        <li>
+            <%= film["title"] %> 
+            <%= link_to "show", film_path(film["url"].gsub(/\D/, "")) %>
+        </li>
     <% end %>
 </ul>

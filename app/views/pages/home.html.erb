@@ -1,14 +1,18 @@
 <h1>Star Wars Films</h1>
 
-
 <%= form_with(url: "/search", local: true, method: "get") do %>
     <%= label_tag(:q, "Search for:") %>
     <%= text_field_tag(:q) %>
     <%= submit_tag("Search") %>
 <% end %>
 
-<ul>
+<ul id="films-listings">
     <% @films.each do |film| %>
-        <li><%= film["title"] %> <%= link_to "show", film_path(film["url"].gsub(/\D/, "")) %></li>
+        <% film_id = film["url"].gsub(/\D/, "") %>
+        <li>
+            <%= film["title"] %> 
+            <%= link_to "show", film_path(film_id) %>
+            <span class="fav-button" onclick="favorited(this.parentNode)" data-id=<%= film_id %>>fave</span>
+        </li>
     <% end %>
 </ul>
