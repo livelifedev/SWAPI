@@ -16,15 +16,19 @@ const favorited = filmObject => {
   films.innerHTML = favoritesString;
 };
 
-// const filmsList = () => {
-//   const container = document.getElementById("films-listings").childNodes;
-//   console.log(container);
+const filmsList = () => {
+  const favorites = JSON.parse(localStorage.getItem("favorites"));
+  const filmItems = document.querySelectorAll(".film-item");
+  const allFilms = [];
 
-//   const allFilms = [];
+  for (let film of filmItems.entries()) {
+    allFilms.push(film[1].outerHTML);
+  }
+  console.log(allFilms);
 
-//   for (let film of filmsList.entries()) {
-//     allFilms.push(film.outerHTML);
-//   }
+  const nonFavorites = allFilms.filter(x => !favorites.includes(x));
 
-//   console.log(allFilms);
-// };
+  console.log(nonFavorites);
+
+  localStorage.setItem("nonFavorites", JSON.stringify(nonFavorites));
+};

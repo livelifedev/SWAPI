@@ -9,7 +9,7 @@
 <ul id="films-listings">
     <% @films.each do |film| %>
         <% film_id = film["url"].gsub(/\D/, "") %>
-        <li>
+        <li class="film-item">
             <%= film["title"] %> 
             <%= link_to "show", film_path(film_id) %>
             <span class="fav-button" onclick="favorited(this.parentNode)">fave</span>
