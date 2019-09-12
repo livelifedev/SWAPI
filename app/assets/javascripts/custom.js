@@ -17,6 +17,7 @@ const favorited = filmObject => {
 
 // Will compare all films and set unfavourited ones in local storage
 const filmsList = () => {
+  console.log("run");
   const favorites = JSON.parse(localStorage.getItem("favorites"));
   const filmItems = document.querySelectorAll(".film-item");
   const allFilms = [];
@@ -34,10 +35,13 @@ const filmsList = () => {
 
 // Will replace html in DOM with new film list
 const loadFilmsList = () => {
+  filmsList();
   const container = document.getElementById("films-listings");
   const favorites = JSON.parse(localStorage.getItem("favorites"));
   const nonFavorites = JSON.parse(localStorage.getItem("nonFavorites"));
-  const displayList = [...favorites, ...nonFavorites];
 
-  container.innerHTML = displayList.join(" ");
+  if (nonFavorites.length !== 0) {
+    const displayList = [...favorites, ...nonFavorites];
+    container.innerHTML = displayList.join(" ");
+  }
 };

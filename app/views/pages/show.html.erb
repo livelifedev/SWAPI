@@ -11,7 +11,19 @@
     <ul id="characters-listings">
         <% @characters.each do |char| %>
             <li class="char-item">
-                <%= char["name"] %> 
+                <a 
+                href="#" data-toggle="tooltip" 
+                data-placement="top" 
+                title="<%= 
+                    'Name:' + ' ' + char["name"] + ' ' +
+                    'Height:' + ' ' + char["height"] + ' ' +
+                    'Mass:' + ' ' + char["mass"] + ' ' +
+                    'Birth Year:' + ' ' + char["birth_year"] + ' ' +
+                    'Gender:' + ' ' + char["gender"]
+                    %>"
+                >
+                    <%= char["name"] %>
+                </a>
             </li>
         <% end %>
     </ul>
