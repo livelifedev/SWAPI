@@ -11,4 +11,11 @@ class PagesController < ApplicationController
         json = JSON.parse(response.body)
         @film = json
     end
+
+    def search
+        query = params["q"]
+        response = HTTParty.get("https://swapi.co/api/films/?search=#{query}")
+        json = JSON.parse(response.body)
+        @results = json["results"]
+    end
 end

@@ -1,6 +1,5 @@
 <h1>Star Wars Films</h1>
 
-
 <%= form_with(url: "/search", local: true, method: "get") do %>
     <%= label_tag(:q, "Search for:") %>
     <%= text_field_tag(:q) %>
@@ -8,7 +7,7 @@
 <% end %>
 
 <ul>
-    <% @films.each do |film| %>
+    <% @results.each do |film| %>
         <li><%= film["title"] %> <%= link_to "show", film_path(film["url"].gsub(/\D/, "")) %></li>
     <% end %>
 </ul>
