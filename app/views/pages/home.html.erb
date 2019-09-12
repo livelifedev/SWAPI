@@ -13,6 +13,7 @@
             <%= film["title"] %> 
             <%= link_to "show", film_path(film_id) %>
             <span class="fav-button" onclick="favorited(this.parentNode)">fave</span>
+            <span class="fav-button" onclick="filmsList()">fave</span>
         </li>
     <% end %>
 </ul>

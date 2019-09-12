@@ -15,3 +15,16 @@ const favorited = filmObject => {
 
   films.innerHTML = favoritesString;
 };
+
+// const filmsList = () => {
+//   const container = document.getElementById("films-listings").childNodes;
+//   console.log(container);
+
+//   const allFilms = [];
+
+//   for (let film of filmsList.entries()) {
+//     allFilms.push(film.outerHTML);
+//   }
+
+//   console.log(allFilms);
+// };
