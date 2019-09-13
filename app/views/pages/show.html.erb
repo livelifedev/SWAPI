@@ -1,13 +1,18 @@
-<h1>Star Wars Films</h1>
+<h1><%= "Episode #{@film["episode_id"]}: #{@film["title"]}" %></h1>
 
-<div>
-    <p><%= @film["title"] %></p>
-    <p><%= @film["episode_id"] %></p>
-    <p><%= @film["opening_crawl"] %></p>
+<div class=".mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <%= @film["opening_crawl"] %>
+        </div>
+    </div>
+    <h4>Director: </h4>
     <p><%= @film["director"] %></p>
+    <h4>Producer: </h4>
     <p><%= @film["producer"] %></p>
+    <h4>Release Date: </h4>
     <p><%= @film["release_date"] %></p>
-    <p>Characters:</p>
+    <h4>Characters:</h4>
     <ul id="characters-listings">
         <% @characters.each do |char| %>
             <li class="char-item">
@@ -27,5 +32,5 @@
             </li>
         <% end %>
     </ul>
-    <p><%= link_to "back", root_path %></p>
+    <p><%= link_to "Go Back", root_path %></p>
 </div>
